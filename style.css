@@ -1,75 +1,96 @@
 .bento {
-    display: grid;
-    gap: var(--spacing-base);
+  display: grid;
+  gap: var(--spacing-base);
+  grid-template-areas:
+    "title title"
+    "image1 image2"
+    "list tag";
+  grid-template-columns: 1fr 1fr;
+  container-type: inline-size;
+}
 
-    .title {
-        --bg: var(--color-brand-yellow);
-    }
+.title {
+  grid-area: title;
+  --bg: var(--color-brand-yellow);
+}
 
-    .list {
-        --bg: var(--color-brand-coffee);
-    }
+.list {
+  grid-area: list;
+  --bg: var(--color-brand-coffee);
+}
 
-    .image-1 {
-        color: var(--color-text-accent);
-    }
+.image-1 {
+  grid-area: image1;
+  color: var(--color-text-accent);
+}
 
-    .tag {
-        --bg: var(--color-brand-olive);
-        font-size: 2rem;
-        line-height: 1.2;
-    }
+.image-2 {
+  grid-area: image2;
+}
+
+.tag {
+  grid-area: tag;
+  --bg: var(--color-brand-olive);
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
 .card {
-    border-radius: var(--border-radius);
-    background: var(--bg);
-    overflow: clip;
+  border-radius: var(--border-radius);
+  background: var(--bg);
+  overflow: clip;
+  container-type: inline-size;
 
-    &:not(:has(img)) {
-        padding: var(--spacing-base);
-    }
+  &:not(:has(img)) {
+    padding: var(--spacing-base);
+  }
 }
 
-h2 {
-    font-size: 4rem;
-    line-height: 1.1;
-    color: var(--color-text-dark);
-    margin-bottom: var(--spacing-base);
+@container (inline-size > 500px) {
+  .title h2 {
+    font-size: 5rem;
+  }
+
+  .tagline {
+    font-size: 3rem;
+  }
 }
 
-.website {
-    font-size: 1.2rem;
-    margin-top: auto;
+@container (inline-size > 700px) {
+  .list li {
+    font-size: 2rem;
+  }
+
+  .website {
+    font-size: 1.5rem;
+  }
 }
-
-
 
 @layer {
-    :root {
-        /* Brand Colors */
-        --color-brand-yellow: #FFB800;
-        --color-brand-olive: #4A5F32;
-        --color-brand-coffee: #5C3C2E;
+  :root {
+    /* Brand Colors */
+    --color-brand-yellow: #ffb800;
+    --color-brand-olive: #4a5f32;
+    --color-brand-coffee: #5c3c2e;
 
-        /* Background Colors */
-        --color-background-dark: #2C1810;
-        --color-background-primary: var(--color-brand-yellow);
-        --color-background-menu: var(--color-brand-coffee);
-        --color-background-accent: var(--color-brand-olive);
+    /* Background Colors */
+    --color-background-dark: #2c1810;
+    --color-background-primary: var(--color-brand-yellow);
+    --color-background-menu: var(--color-brand-coffee);
+    --color-background-accent: var(--color-brand-olive);
 
-        /* Text Colors */
-        --color-text-dark: var(--color-background-dark);
-        --color-text-light: #FFFFFF;
-        --color-text-accent: var(--color-brand-yellow);
+    /* Text Colors */
+    --color-text-dark: var(--color-background-dark);
+    --color-text-light: #ffffff;
+    --color-text-accent: var(--color-brand-yellow);
 
-        /* Component Colors */
-        --color-logo-icon: var(--color-text-dark);
-        --color-menu-highlight: var(--color-brand-yellow);
+    /* Component Colors */
+    --color-logo-icon: var(--color-text-dark);
+    --color-menu-highlight: var(--color-brand-yellow);
 
-        /* Layout */
-        --border-radius: 24px;
-        --spacing-base: 20px;
-        --spacing-large: 40px;
-    }
+    /* Layout */
+    --border-radius: 24px;
+    --spacing-base: 20px;
+    --spacing-large: 40px;
+  }
 }
