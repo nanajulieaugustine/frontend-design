@@ -43,11 +43,12 @@ article {
 
   @container (width > 500px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    li:nth-child(2n) article img {
-      order: 1;
-    }
+    grid-template-columns: auto auto;
+  }
+}
+@container (width > 500px) {
+  li:nth-child(even) img {
+    order: 1;
   }
 }
 
