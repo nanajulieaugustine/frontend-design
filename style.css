@@ -7,53 +7,93 @@
     "title title cup"
     "man list cup"
     "man list tag";
-  container-type: inline-size;
 
-  @media (width<600px) {
+  @media (width<650px) {
     grid-template-areas:
       "title title"
-      "cup tag"
-      "list man";
+      "cup man"
+      "list tag";
   }
 }
 
 .title {
-  container-type: inline-size;
-  display: grid;
   grid-area: title;
   --bg: var(--color-brand-yellow);
+
+  div {
+    display: flex;
+    flex-wrap: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    > p {
+      text-wrap: pretty;
+    }
+    @container (width<400px) {
+      display: contents;
+      > p:first-of-type {
+        order: -1;
+        margin-bottom: 1rlh;
+      }
+    }
+  }
+  h2 {
+    font-size: clamp(2rem, 15cqw, 4rem);
+  }
 }
 
 .list {
-  container-type: inline-size;
-  display: grid;
   grid-area: list;
   --bg: var(--color-brand-coffee);
+  color: #fff;
+  list-style: none;
+  font-size: 2rem;
+  line-height: 1.5;
+  place-content: center;
+
+  .highlight {
+    color: var(--color-menu-highlight);
+    &::before {
+      content: "⚡";
+      margin-right: 10px;
+    }
+  }
 }
 
 .image-1 {
-  container-type: inline-size;
-  display: grid;
-  grid-area: man;
+  grid-area: cup;
   color: var(--color-text-accent);
+  grid: "stack";
+  justify-content: center;
+  align-items: end;
+  > * {
+    grid-area: stack;
+    &:not(img) {
+      margin: var(--spacing-base);
+    }
+  }
+  p:first-of-type {
+    align-self: start;
+  }
 }
 
 .image-2 {
-  container-type: inline-size;
-  display: grid;
-  grid-area: cup;
+  grid-area: man;
 }
 
 .tag {
-  container-type: inline-size;
-  display: grid;
   grid-area: tag;
   --bg: var(--color-brand-olive);
-  font-size: 2rem;
-  line-height: 1.2;
+  > p:first-of-type {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  .website {
+    font-weight: 800;
+  }
 }
 
 .card {
+  display: grid;
   border-radius: var(--border-radius);
   background: var(--bg);
   overflow: clip;
