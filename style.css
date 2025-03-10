@@ -1,16 +1,104 @@
 :root {
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  --size-step-0: clamp(1rem, calc(0.96rem + 0.22vw), 1.13rem);
+  --size-step-1: clamp(1.25rem, calc(1.16rem + 0.43vw), 1.5rem);
+  --size-step-2: clamp(1.56rem, calc(1.41rem + 0.76vw), 2rem);
+  --size-step-3: clamp(1.95rem, calc(1.71rem + 1.24vw), 2.66rem);
+  --size-step-4: clamp(2.44rem, calc(2.05rem + 1.93vw), 3.55rem);
 }
 
 body {
-    font-family: system-ui, sans-serif;
+  font-family: system-ui, sans-serif;
+  padding: 2em;
+  font-size: var(--size-step-0);
+  line-height: 1.7;
+  color: var(--gray-800);
+}
+
+article > * + * {
+  margin-block-start: var(--flow-space, 1em);
+
+  :is(h1, h2, h3) {
+    --flow-space: 1.5em;
+  }
+}
+
+article {
+  max-width: 65ch;
+  margin-inline: auto;
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 3rem;
+    font-family: "Arial Narrow Bold", sans-serif;
+    font-weight: 800;
+    line-height: 1.1;
+    text-wrap: balance;
+    color: var(--gray-900);
+  }
+
+  h1:first-of-type {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-size: var(--size-step-4);
+    color: var(--gray-900);
+  }
+
+  h1 {
+    font-size: var(--size-step-3);
+  }
+
+  h2 {
+    font-size: var(--size-step-2);
+  }
+
+  h3 {
+    font-size: var(--size-step-1);
+  }
+
+  a {
+    color: var(--gray-500);
+    text-decoration-color: var(--gray-500);
+    text-decoration-thickness: 0.2ex;
+    text-underline-offset: 0.23ex;
+  }
+
+  .text-lead {
+    font-size: var(--size-step-1);
+    font-style: italic;
+    max-width: 50ch;
+    color: var(--gray-500);
+  }
+
+  .text-lead + * {
+    --flow-space: 2em;
+  }
+
+  h2 + h3 {
+    margin-top: 1rem;
+    color: var(--gray-700);
+    font-weight: 600;
+  }
+
+  figure {
+    margin-top: 2rem;
+  }
+
+  figure + * {
+    padding-top: 0rem;
+  }
+
+  figcaption {
+    color: var(--gray-500);
+  }
 }
